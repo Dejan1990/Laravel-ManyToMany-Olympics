@@ -11,76 +11,7 @@
                             <div class="card-body">
                                 @csrf
 
-                                <div class="form-group row">
-                                    <label for="first" class="col-md-4 form-col-label text-md-right">1st place:</label>
-                                    <div class="col-md-6">
-                                        <select 
-                                            name="sports[{{ $sport->id }}][0]" 
-                                            class="form-control @error('sports.'.$sport->id.'.0') is-invalid @enderror"
-                                        >
-                                            <option value="">-- choose country --</option>
-                                            @foreach ($countries as $country)
-                                                <option value="{{ $country->id }}"
-                                                    @if(old('sports.'.$sport->id.'.0') == $country->id) selected @endif
-                                                >
-                                                    {{ $country->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('sports.'.$sport->id.'.0')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="second" class="col-md-4 form-col-label text-md-right">1st place:</label>
-                                    <div class="col-md-6">
-                                        <select 
-                                            name="sports[{{ $sport->id }}][1]" 
-                                            class="form-control @error('sports.'.$sport->id.'.1') is-invalid @enderror"
-                                        >
-                                            <option value="">-- choose country --</option>
-                                            @foreach ($countries as $country)
-                                                <option 
-                                                    value="{{ $country->id }}"
-                                                    @if(old('sports.'.$sport->id.'.1') == $country->id) selected @endif
-                                                >
-                                                    {{ $country->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('sports.'.$sport->id.'.1')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="third" class="col-md-4 form-col-label text-md-right">1st place:</label>
-                                    <div class="col-md-6">
-                                        <select 
-                                            name="sports[{{ $sport->id }}][2]" 
-                                            class="form-control @error('sports.'.$sport->id.'.2') is-invalid @enderror">
-                                            <option value="">-- choose country --</option>
-                                            @foreach ($countries as $country)
-                                                <option 
-                                                    value="{{ $country->id }}"
-                                                    @if(old('sports.'.$sport->id.'.2') == $country->id) selected @endif
-                                                >
-                                                    {{ $country->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('sports.'.$sport->id.'.2')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                                @livewire('sports', ['sportId' => $sport->id, 'countries' => $countries])
                             </div>
                         </div>
                     @endforeach
