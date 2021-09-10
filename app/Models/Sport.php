@@ -10,4 +10,9 @@ class Sport extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function countries()
+    {
+        return $this->belongsToMany(Country::class)->withPivot('position');
+    }
 }
